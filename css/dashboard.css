@@ -1,0 +1,138 @@
+.welcome-card {
+    background: linear-gradient(135deg, #0f766e, #0f172a);
+    color: white;
+    padding: 30px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 7px 12px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.welcome-card h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.welcome-card p {
+    max-width: 750px;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background: white;
+    color: #0f766e;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.stat-card p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.stat-card h3 {
+    font-size: 34px;
+    margin: 10px 0;
+    color: #0f766e;
+}
+
+.stat-card span {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.stat-card.large {
+    grid-column: span 2;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.quick-actions a {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.quick-actions a:hover {
+    transform: translateY(-5px);
+    border-color: #0f766e;
+}
+
+.quick-actions h4 {
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.quick-actions p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 1100px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .welcome-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .stats-grid,
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card.large {
+        grid-column: span 1;
+    }
+}
