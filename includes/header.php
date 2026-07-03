@@ -41,6 +41,7 @@
                 <div class="user-box">
                     <div class="avatar">A</div>
                     <div>
+                        <a href="logout.php" class="logout-btn">Déconnexion</a>
                         <strong>Administrateur</strong>
                         <p>Akio Service</p>
                     </div>
