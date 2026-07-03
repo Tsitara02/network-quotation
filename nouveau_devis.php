@@ -244,12 +244,12 @@ require_once "includes/header.php";
                 <button 
                     type="button" 
                     class="choice-item"
-                    onclick="ajouterLigne(
-                        '<?php echo htmlspecialchars($materiel["nom"], ENT_QUOTES); ?>',
-                        'Matériel',
+                    onclick='ajouterLigne(
+                        <?php echo json_encode($materiel["nom"]); ?>,
+                        "Matériel",
                         1,
-                        '<?php echo htmlspecialchars($materiel["prix_unitaire"], ENT_QUOTES); ?>'
-                    )"
+                        <?php echo json_encode($materiel["prix_unitaire"]); ?>
+                    )'
                 >
                     <div>
                         <strong><?php echo htmlspecialchars($materiel["nom"]); ?></strong>
@@ -280,12 +280,12 @@ require_once "includes/header.php";
                 <button 
                     type="button" 
                     class="choice-item"
-                    onclick="ajouterLigne(
-                        '<?php echo htmlspecialchars($prestation["nom"], ENT_QUOTES); ?>',
-                        'Prestation',
+                    onclick='ajouterLigne(
+                        <?php echo json_encode($prestation["nom"]); ?>,
+                        "Prestation",
                         1,
-                        '<?php echo htmlspecialchars($prestation["prix_base"], ENT_QUOTES); ?>'
-                    )"
+                        <?php echo json_encode($prestation["prix_base"]); ?>
+                    )'
                 >
                     <div>
                         <strong><?php echo htmlspecialchars($prestation["nom"]); ?></strong>

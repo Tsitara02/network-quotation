@@ -73,7 +73,7 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// Modal javascrip materiel
+// Modal javascript materiel
 
 function openAddMaterielModal() {
     document.getElementById("materielModalTitle").textContent = "Ajouter un matériel";
@@ -120,7 +120,7 @@ function closeDeleteMaterielModal() {
 
 // Fin modal javascript materiel
 
-// debut modal javascript service
+// Debut modal javascript service
 function openAddServiceModal() {
     document.getElementById("serviceModalTitle").textContent = "Ajouter une prestation";
     document.getElementById("serviceSubmitBtn").textContent = "Enregistrer";
@@ -161,23 +161,35 @@ function closeDeleteServiceModal() {
 }
 // Fin modal javascript service
 
-// javascript pour le nouveau devis
+// Javascript pour le nouveau devis
 let ligneIndex = 0;
 
 function openMaterielChoiceModal() {
-    document.getElementById("materielChoiceModal").classList.add("show");
+    const modal = document.getElementById("materielChoiceModal");
+    if (modal) {
+        modal.classList.add("show");
+    }
 }
 
 function closeMaterielChoiceModal() {
-    document.getElementById("materielChoiceModal").classList.remove("show");
+    const modal = document.getElementById("materielChoiceModal");
+    if (modal) {
+        modal.classList.remove("show");
+    }
 }
 
 function openPrestationChoiceModal() {
-    document.getElementById("prestationChoiceModal").classList.add("show");
+    const modal = document.getElementById("prestationChoiceModal");
+    if (modal) {
+        modal.classList.add("show");
+    }
 }
 
 function closePrestationChoiceModal() {
-    document.getElementById("prestationChoiceModal").classList.remove("show");
+    const modal = document.getElementById("prestationChoiceModal");
+    if (modal) {
+        modal.classList.remove("show");
+    }
 }
 
 function ajouterLigne(designation, type, quantite, prix) {
@@ -315,7 +327,7 @@ function formatAriary(nombre) {
         maximumFractionDigits: 0
     }).format(nombre) + " Ar";
 }
-// fin du javascript pour le nouveau devis
+// Fin du javascript pour le nouveau devis
 
 function openDeleteDevisModal(id, numero) {
     document.getElementById("deleteDevisNumero").textContent = numero;
