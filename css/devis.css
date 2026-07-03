@@ -1,5 +1,5 @@
 .panel-subtitle {
-    color: #64748b;
+    color: var(--color-text-secondary);
     margin-top: 5px;
     font-size: 14px;
 }
@@ -25,22 +25,24 @@
 
 .form-group label {
     font-weight: bold;
-    color: #334155;
+    color: var(--color-text);
     font-size: 14px;
 }
 
 .form-group input,
 .form-group select {
     padding: 12px 14px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--color-border-input);
     border-radius: 12px;
     font-size: 14px;
     outline: none;
+    background: var(--color-panel-bg);
+    color: var(--color-text);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #0f766e;
+    border-color: var(--color-accent);
 }
 
 .summary-panel {
@@ -54,20 +56,20 @@
     justify-content: space-between;
     gap: 15px;
     padding: 14px 0;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .summary-line span {
-    color: #64748b;
+    color: var(--color-text-secondary);
 }
 
 .summary-line strong {
-    color: #0f172a;
+    color: var(--color-text-strong);
 }
 
 .summary-total {
     margin-top: 10px;
-    background: #0f172a;
+    background: var(--color-text-strong);
     color: white;
     padding: 18px;
     border-radius: 14px;
@@ -87,8 +89,8 @@
 }
 
 .btn-secondary {
-    background: #e2e8f0;
-    color: #0f172a;
+    background: var(--color-table-header-bg);
+    color: var(--color-text-strong);
     border: none;
     padding: 11px 14px;
     border-radius: 10px;
@@ -97,7 +99,7 @@
 }
 
 .btn-secondary:hover {
-    background: #cbd5e1;
+    background: var(--color-border-input);
 }
 
 .table-wrapper {
@@ -107,8 +109,10 @@
 #lignesTable input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--color-border-input);
     border-radius: 8px;
+    background: var(--color-panel-bg);
+    color: var(--color-text);
 }
 
 .type-badge {
@@ -144,8 +148,8 @@
 
 .choice-item {
     width: 100%;
-    background: #f8fafc;
-    border: 1px solid #e5e7eb;
+    background: var(--color-empty-bg);
+    border: 1px solid var(--color-border);
     padding: 14px;
     border-radius: 14px;
     cursor: pointer;
@@ -157,23 +161,23 @@
 }
 
 .choice-item:hover {
-    border-color: #0f766e;
-    background: #ecfdf5;
+    border-color: var(--color-accent);
+    background: var(--color-status-bg);
 }
 
 .choice-item strong {
     display: block;
-    color: #0f172a;
+    color: var(--color-text-strong);
     margin-bottom: 5px;
 }
 
 .choice-item span {
-    color: #64748b;
+    color: var(--color-text-secondary);
     font-size: 14px;
 }
 
 .choice-item p {
-    color: #0f766e;
+    color: var(--color-accent);
     font-weight: bold;
     white-space: nowrap;
 }
@@ -209,6 +213,11 @@
         align-items: flex-start;
     }
 }
+
+/* ==========================================================
+   IMPRESSION / VUE DÉTAILLÉE DU DEVIS
+   ========================================================== */
+
 .devis-actions {
     display: flex;
     justify-content: space-between;
@@ -217,18 +226,18 @@
 }
 
 .print-devis {
-    background: white;
+    background: var(--color-panel-bg);
     padding: 35px;
     border-radius: 20px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 18px var(--color-shadow);
 }
 
 .devis-header {
     display: flex;
     justify-content: space-between;
     gap: 25px;
-    border-bottom: 2px solid #0f766e;
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 25px;
     margin-bottom: 25px;
 }
@@ -243,13 +252,13 @@
     width: 90px;
     height: 90px;
     object-fit: contain;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
     border-radius: 14px;
     padding: 8px;
 }
 
 .company-info h2 {
-    color: #0f172a;
+    color: var(--color-text-strong);
     font-size: 26px;
     margin-bottom: 6px;
 }
@@ -258,7 +267,7 @@
 .devis-info p,
 .devis-box p,
 .conditions-box p {
-    color: #475569;
+    color: var(--color-text-secondary);
     margin-bottom: 6px;
     line-height: 1.5;
 }
@@ -268,7 +277,7 @@
 }
 
 .devis-info h1 {
-    color: #0f766e;
+    color: var(--color-accent);
     font-size: 42px;
     margin-bottom: 10px;
 }
@@ -281,16 +290,16 @@
 }
 
 .devis-box {
-    background: #f8fafc;
+    background: var(--color-empty-bg);
     padding: 20px;
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
 }
 
 .devis-box h3,
 .devis-table-section h3,
 .conditions-box h3 {
-    color: #0f172a;
+    color: var(--color-text-strong);
     margin-bottom: 12px;
 }
 
@@ -299,7 +308,7 @@
 }
 
 .devis-table th {
-    background: #0f172a;
+    background: var(--color-text-strong);
     color: white;
 }
 
@@ -317,36 +326,36 @@
 }
 
 .conditions-box {
-    background: #f8fafc;
+    background: var(--color-empty-bg);
     padding: 20px;
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
 }
 
 .totaux-box {
-    background: #f8fafc;
+    background: var(--color-empty-bg);
     padding: 20px;
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
 }
 
 .total-row {
     display: flex;
     justify-content: space-between;
     padding: 12px 0;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .total-row span {
-    color: #475569;
+    color: var(--color-text-secondary);
 }
 
 .total-row strong {
-    color: #0f172a;
+    color: var(--color-text-strong);
 }
 
 .total-final {
-    background: #0f766e;
+    background: var(--color-accent);
     color: white;
     margin-top: 12px;
     padding: 16px;
@@ -369,7 +378,7 @@
 
 .signature-box {
     height: 90px;
-    border-bottom: 1px solid #94a3b8;
+    border-bottom: 1px solid var(--color-border-input);
     margin: 15px 0;
 }
 
@@ -393,8 +402,6 @@
         flex-direction: column;
     }
 }
-
-/* IMPRESSION */
 
 @media print {
     body {
@@ -438,16 +445,10 @@
         page-break-inside: avoid;
     }
 }
-/* liste devis */
-.table-wrapper {
-    overflow-x: auto;
-}
 
-.panel-subtitle {
-    color: #64748b;
-    margin-top: 5px;
-    font-size: 14px;
-}
+/* ==========================================================
+   LISTE DES DEVIS
+   ========================================================== */
 
 .panel-header .btn-submit {
     text-decoration: none;
@@ -455,26 +456,7 @@
 }
 
 td small {
-    color: #64748b;
-    font-size: 12px;
-}
-.table-wrapper {
-    overflow-x: auto;
-}
-
-.panel-subtitle {
-    color: #64748b;
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.panel-header .btn-submit {
-    text-decoration: none;
-    display: inline-block;
-}
-
-td small {
-    color: #64748b;
+    color: var(--color-text-secondary);
     font-size: 12px;
 }
 
@@ -508,7 +490,7 @@ td small {
 }
 
 .btn-cancel {
-    background: #64748b;
+    background: var(--color-text-secondary);
     color: white;
 }
 

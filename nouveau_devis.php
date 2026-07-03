@@ -56,8 +56,8 @@ require_once "includes/header.php";
                 <div class="form">
 
                     <div class="form-group">
-                        <label>Client</label>
-                        <select name="client_id" required>
+                        <label for="client_id_select">Client</label>
+                        <select name="client_id" id="client_id_select" required>
                             <option value="">-- Choisir un client --</option>
 
                             <?php foreach ($clients as $client): ?>
@@ -72,8 +72,8 @@ require_once "includes/header.php";
                     </div>
 
                     <div class="form-group">
-                        <label>Type d’installation</label>
-                        <select name="type_installation" required>
+                        <label for="type_installation_select">Type d’installation</label>
+                        <select name="type_installation" id="type_installation_select" required>
                             <option value="">-- Choisir --</option>
                             <option value="Installation Starlink">Installation Starlink</option>
                             <option value="Installation Wi-Fi maison">Installation Wi-Fi maison</option>
@@ -87,7 +87,7 @@ require_once "includes/header.php";
                     </div>
 
                     <div class="form-group">
-                        <label>Taux TVA (%)</label>
+                        <label for="taux_tva">Taux TVA (%)</label>
                         <input 
                             type="number" 
                             name="taux_tva" 
@@ -100,7 +100,7 @@ require_once "includes/header.php";
                     </div>
 
                     <div class="form-group">
-                        <label>Remise (%)</label>
+                        <label for="remise">Remise (%)</label>
                         <input 
                             type="number" 
                             name="remise" 
@@ -113,8 +113,8 @@ require_once "includes/header.php";
                     </div>
 
                     <div class="form-group">
-                        <label>Statut</label>
-                        <select name="statut">
+                        <label for="statut_select">Statut</label>
+                        <select name="statut" id="statut_select">
                             <option value="Brouillon">Brouillon</option>
                             <option value="Envoyé">Envoyé</option>
                             <option value="Accepté">Accepté</option>

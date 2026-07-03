@@ -211,27 +211,27 @@ require_once "includes/header.php";
             <input type="hidden" name="id" id="client_id">
 
             <div class="form-group">
-                <label>Nom du client</label>
+                <label for="client_nom">Nom du client</label>
                 <input type="text" name="nom" id="client_nom" placeholder="Ex : Hôtel Toliara" required>
             </div>
 
             <div class="form-group">
-                <label>Téléphone</label>
+                <label for="client_telephone">Téléphone</label>
                 <input type="text" name="telephone" id="client_telephone" placeholder="Ex : 034 00 000 00">
             </div>
 
             <div class="form-group">
-                <label>Adresse</label>
+                <label for="client_adresse">Adresse</label>
                 <input type="text" name="adresse" id="client_adresse" placeholder="Ex : Toliara">
             </div>
 
             <div class="form-group">
-                <label>Email</label>
+                <label for="client_email">Email</label>
                 <input type="email" name="email" id="client_email" placeholder="Ex : client@email.com">
             </div>
 
             <div class="form-group">
-                <label>Type de client</label>
+                <label for="client_type">Type de client</label>
                 <select name="type_client" id="client_type">
                     <option value="Particulier">Particulier</option>
                     <option value="Entreprise">Entreprise</option>

@@ -1,5 +1,5 @@
 .welcome-card {
-    background: linear-gradient(135deg, #0f766e, #0f172a);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-text-strong));
     color: white;
     padding: 30px;
     border-radius: 22px;
@@ -32,7 +32,7 @@
 
 .btn-primary {
     background: white;
-    color: #0f766e;
+    color: var(--color-accent);
     padding: 14px 18px;
     border-radius: 12px;
     text-decoration: none;
@@ -48,26 +48,26 @@
 }
 
 .stat-card {
-    background: white;
+    background: var(--color-panel-bg);
     padding: 22px;
     border-radius: 18px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 5px 18px var(--color-shadow);
+    border: 1px solid var(--color-border);
 }
 
 .stat-card p {
-    color: #64748b;
+    color: var(--color-text-secondary);
     font-size: 15px;
 }
 
 .stat-card h3 {
     font-size: 34px;
     margin: 10px 0;
-    color: #0f766e;
+    color: var(--color-accent);
 }
 
 .stat-card span {
-    color: #64748b;
+    color: var(--color-text-secondary);
     font-size: 14px;
 }
 
@@ -83,28 +83,28 @@
 }
 
 .quick-actions a {
-    background: white;
+    background: var(--color-panel-bg);
     padding: 20px;
     border-radius: 18px;
     text-decoration: none;
-    color: #1f2937;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 18px var(--color-shadow);
     transition: 0.3s;
 }
 
 .quick-actions a:hover {
     transform: translateY(-5px);
-    border-color: #0f766e;
+    border-color: var(--color-accent);
 }
 
 .quick-actions h4 {
-    color: #0f172a;
+    color: var(--color-text-strong);
     margin-bottom: 8px;
 }
 
 .quick-actions p {
-    color: #64748b;
+    color: var(--color-text-secondary);
     font-size: 14px;
     line-height: 1.5;
 }

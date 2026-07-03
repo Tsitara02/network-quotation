@@ -1,6 +1,18 @@
+/*
+    Fonction utilitaire : échapper le HTML pour éviter les injections XSS
+    quand on insère des valeurs dynamiques (nom de matériel, prestation, etc.)
+    dans le DOM via innerHTML/template strings.
+*/
+function escapeHtml(valeur) {
+    const div = document.createElement("div");
+    div.textContent = valeur;
+    return div.innerHTML;
+}
+
 function openAddClientModal() {
     document.getElementById("clientModalTitle").textContent = "Ajouter un client";
     document.getElementById("clientSubmitBtn").textContent = "Enregistrer";
+    document.getElementById("clientSubmitBtn").disabled = false;
 
     document.getElementById("client_id").value = "";
     document.getElementById("client_nom").value = "";
@@ -15,6 +27,7 @@ function openAddClientModal() {
 function openEditClientModal(id, nom, telephone, adresse, email, typeClient) {
     document.getElementById("clientModalTitle").textContent = "Modifier le client";
     document.getElementById("clientSubmitBtn").textContent = "Modifier";
+    document.getElementById("clientSubmitBtn").disabled = false;
 
     document.getElementById("client_id").value = id;
     document.getElementById("client_nom").value = nom;
@@ -65,6 +78,7 @@ document.addEventListener("keydown", function(event) {
 function openAddMaterielModal() {
     document.getElementById("materielModalTitle").textContent = "Ajouter un matériel";
     document.getElementById("materielSubmitBtn").textContent = "Enregistrer";
+    document.getElementById("materielSubmitBtn").disabled = false;
 
     document.getElementById("materiel_id").value = "";
     document.getElementById("materiel_nom").value = "";
@@ -79,6 +93,7 @@ function openAddMaterielModal() {
 function openEditMaterielModal(id, nom, categorie, prix, unite, actif) {
     document.getElementById("materielModalTitle").textContent = "Modifier le matériel";
     document.getElementById("materielSubmitBtn").textContent = "Modifier";
+    document.getElementById("materielSubmitBtn").disabled = false;
 
     document.getElementById("materiel_id").value = id;
     document.getElementById("materiel_nom").value = nom;
@@ -109,6 +124,7 @@ function closeDeleteMaterielModal() {
 function openAddServiceModal() {
     document.getElementById("serviceModalTitle").textContent = "Ajouter une prestation";
     document.getElementById("serviceSubmitBtn").textContent = "Enregistrer";
+    document.getElementById("serviceSubmitBtn").disabled = false;
 
     document.getElementById("service_id").value = "";
     document.getElementById("service_nom").value = "";
@@ -121,6 +137,7 @@ function openAddServiceModal() {
 function openEditServiceModal(id, nom, prix, description) {
     document.getElementById("serviceModalTitle").textContent = "Modifier la prestation";
     document.getElementById("serviceSubmitBtn").textContent = "Modifier";
+    document.getElementById("serviceSubmitBtn").disabled = false;
 
     document.getElementById("service_id").value = id;
     document.getElementById("service_nom").value = nom;
@@ -171,6 +188,10 @@ function ajouterLigne(designation, type, quantite, prix) {
         empty.style.display = "none";
     }
 
+    // Échappement des valeurs texte avant insertion dans le DOM (anti-XSS)
+    const designationSafe = escapeHtml(designation);
+    const typeSafe = escapeHtml(type);
+
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
@@ -178,18 +199,18 @@ function ajouterLigne(designation, type, quantite, prix) {
             <input 
                 type="text" 
                 name="lignes[${ligneIndex}][designation]" 
-                value="${designation}" 
+                value="${designationSafe}" 
                 required
                 oninput="calculerDevis()"
             >
         </td>
 
         <td>
-            <span class="type-badge">${type}</span>
+            <span class="type-badge">${typeSafe}</span>
             <input 
                 type="hidden" 
                 name="lignes[${ligneIndex}][type]" 
-                value="${type}"
+                value="${typeSafe}"
             >
         </td>
 
@@ -295,6 +316,7 @@ function formatAriary(nombre) {
     }).format(nombre) + " Ar";
 }
 // fin du javascript pour le nouveau devis
+
 function openDeleteDevisModal(id, numero) {
     document.getElementById("deleteDevisNumero").textContent = numero;
     document.getElementById("confirmDeleteDevisBtn").href = "liste_devis.php?delete=" + id;
@@ -315,3 +337,117 @@ function openStatutDevisModal(id, numero, statut) {
 function closeStatutDevisModal() {
     document.getElementById("statutDevisModal").classList.remove("show");
 }
+
+/*
+    ================================
+    RECHERCHE : FILTRAGE DU TABLEAU
+    ================================
+    Filtre les lignes du tableau visible sur la page courante
+    (clients, matériels, prestations, liste des devis...) en fonction
+    du texte tapé dans la barre de recherche du header.
+*/
+
+function filtrerTableau(terme) {
+    const texteRecherche = terme.trim().toLowerCase();
+
+    // On cible uniquement les tableaux de données affichés dans le contenu,
+    // pas le tableau de saisie des lignes d'un devis (#lignesTable).
+    const tableau = document.querySelector(".content table:not(#lignesTable)");
+
+    if (!tableau) {
+        return;
+    }
+
+    const lignes = tableau.querySelectorAll("tbody tr");
+    let resultatsVisibles = 0;
+
+    lignes.forEach(function(ligne) {
+        const texteLigne = ligne.textContent.toLowerCase();
+        const correspond = texteLigne.includes(texteRecherche);
+
+        ligne.style.display = correspond ? "" : "none";
+
+        if (correspond) {
+            resultatsVisibles++;
+        }
+    });
+
+    afficherMessageAucunResultat(tableau, resultatsVisibles, texteRecherche);
+}
+
+function afficherMessageAucunResultat(tableau, resultatsVisibles, texteRecherche) {
+    let messageVide = document.getElementById("searchNoResults");
+
+    if (resultatsVisibles === 0 && texteRecherche !== "") {
+        if (!messageVide) {
+            messageVide = document.createElement("div");
+            messageVide.id = "searchNoResults";
+            messageVide.className = "empty";
+            tableau.insertAdjacentElement("afterend", messageVide);
+        }
+
+        messageVide.innerHTML = `
+            <h3>Aucun résultat</h3>
+            <p>Aucune ligne ne correspond à votre recherche.</p>
+        `;
+        messageVide.style.display = "block";
+        tableau.style.display = "none";
+
+    } else {
+        if (messageVide) {
+            messageVide.style.display = "none";
+        }
+        tableau.style.display = "";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", function() {
+            filtrerTableau(this.value);
+        });
+    }
+});
+
+/*
+    ================================
+    PROTECTION ANTI DOUBLE-SUBMIT
+    ================================
+*/
+
+// Formulaire client (dans la modal d'ajout/modification)
+document.addEventListener("DOMContentLoaded", function() {
+    const clientForm = document.querySelector("#clientModal form");
+
+    if (clientForm) {
+        clientForm.addEventListener("submit", function() {
+            const btn = document.getElementById("clientSubmitBtn");
+            if (btn) {
+                btn.disabled = true;
+            }
+        });
+    }
+
+    // Formulaire nouveau devis : vérifie qu'il y a au moins une ligne,
+    // puis désactive le bouton pour éviter un double enregistrement.
+    const devisForm = document.getElementById("devisForm");
+
+    if (devisForm) {
+        devisForm.addEventListener("submit", function(event) {
+            const lignes = document.querySelectorAll("#lignesBody tr");
+
+            if (lignes.length === 0) {
+                event.preventDefault();
+                alert("Ajoutez au moins une ligne avant d'enregistrer le devis.");
+                return;
+            }
+
+            const submitBtn = devisForm.querySelector("button[type=submit]");
+            if (submitBtn) {
+                submitBtn.disabled = true;
+            }
+        });
+    }
+});

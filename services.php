@@ -198,7 +198,7 @@ require_once "includes/header.php";
             <input type="hidden" name="id" id="service_id">
 
             <div class="form-group">
-                <label>Nom de la prestation</label>
+                <label for="service_nom">Nom de la prestation</label>
                 <input 
                     type="text" 
                     name="nom" 
@@ -209,7 +209,7 @@ require_once "includes/header.php";
             </div>
 
             <div class="form-group">
-                <label>Prix de base</label>
+                <label for="service_prix">Prix de base</label>
                 <input 
                     type="number" 
                     name="prix_base" 
@@ -220,7 +220,7 @@ require_once "includes/header.php";
             </div>
 
             <div class="form-group">
-                <label>Description</label>
+                <label for="service_description">Description</label>
                 <textarea 
                     name="description" 
                     id="service_description"

@@ -221,12 +221,12 @@ require_once "includes/header.php";
             <input type="hidden" name="id" id="materiel_id">
 
             <div class="form-group">
-                <label>Nom du matériel</label>
+                <label for="materiel_nom">Nom du matériel</label>
                 <input type="text" name="nom" id="materiel_nom" placeholder="Ex : MikroTik hAP ac²" required>
             </div>
 
             <div class="form-group">
-                <label>Catégorie</label>
+                <label for="materiel_categorie">Catégorie</label>
                 <select name="categorie" id="materiel_categorie">
                     <option value="Routeur">Routeur</option>
                     <option value="CPE">CPE</option>
@@ -242,12 +242,12 @@ require_once "includes/header.php";
             </div>
 
             <div class="form-group">
-                <label>Prix unitaire</label>
+                <label for="materiel_prix">Prix unitaire</label>
                 <input type="number" name="prix_unitaire" id="materiel_prix" placeholder="Ex : 350000" required>
             </div>
 
             <div class="form-group">
-                <label>Unité</label>
+                <label for="materiel_unite">Unité</label>
                 <select name="unite" id="materiel_unite">
                     <option value="pièce">pièce</option>
                     <option value="mètre">mètre</option>
@@ -258,7 +258,7 @@ require_once "includes/header.php";
             </div>
 
             <div class="form-group">
-                <label>État</label>
+                <label for="materiel_actif">État</label>
                 <select name="actif" id="materiel_actif">
                     <option value="1">Actif</option>
                     <option value="0">Inactif</option>

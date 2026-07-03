@@ -29,7 +29,12 @@
 
             <div class="topbar-right">
                 <div class="search-box">
-                    <input type="text" placeholder="Rechercher...">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Rechercher..."
+                        autocomplete="off"
+                    >
                 </div>
 
                 <div class="user-box">

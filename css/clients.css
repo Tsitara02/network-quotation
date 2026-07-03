@@ -1,5 +1,5 @@
 .panel-subtitle {
-    color: #64748b;
+    color: var(--color-text-secondary);
     margin-top: 5px;
     font-size: 14px;
 }
@@ -34,7 +34,7 @@
 }
 
 .btn-cancel {
-    background: #64748b;
+    background: var(--color-text-secondary);
     color: white;
 }
 
@@ -60,20 +60,22 @@
 
 .form-group label {
     font-weight: bold;
-    color: #334155;
+    color: var(--color-text);
     font-size: 14px;
 }
 
 .form-group input,
 .form-group select {
     padding: 12px 14px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--color-border-input);
     border-radius: 12px;
     font-size: 14px;
     outline: none;
+    background: var(--color-panel-bg);
+    color: var(--color-text);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #0f766e;
+    border-color: var(--color-accent);
 }
